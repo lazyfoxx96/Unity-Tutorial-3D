@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class StudyDictionary : MonoBehaviour
 {
+    //커밋되돌리기
+
     public Dictionary<string, int> persons = new Dictionary<string, int>();
 
     private void Start()
