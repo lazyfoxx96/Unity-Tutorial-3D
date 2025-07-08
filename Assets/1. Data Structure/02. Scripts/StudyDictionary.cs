@@ -1,21 +1,21 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using System.IO.Pipes;
 using UnityEngine;
 
 public class StudyDictionary : MonoBehaviour
 {
-    //Ä¿¹ÔµÇµ¹¸®±â
+    //ì»¤ë°‹ë˜ëŒë¦¬ê¸°
 
     public Dictionary<string, int> persons = new Dictionary<string, int>();
 
     private void Start()
     {
-        persons.Add("Ã¶¼ö", 10);
-        persons.Add("¿µÈñ", 15);
-        persons.Add("µ¿¼ö", 17);
+        persons.Add("ì² ìˆ˜", 10);
+        persons.Add("ì˜í¬", 15);
+        persons.Add("ë™ìˆ˜", 17);
 
-        int age = persons["Ã¶¼ö"];
-        Debug.Log($"Ã¶¼öÀÇ ³ªÀÌ´Â {age}ÀÔ´Ï´Ù.");
+        int age = persons["ì² ìˆ˜"];
+        Debug.Log($"ì² ìˆ˜ì˜ ë‚˜ì´ëŠ” {age}ì…ë‹ˆë‹¤.");
 
         string name;
 
@@ -23,19 +23,19 @@ public class StudyDictionary : MonoBehaviour
         {
             if(person.Value == 15)
             {
-                Debug.Log($"³ªÀÌ°¡ 15ÀÎ »ç¶÷ÀÇ ÀÌ¸§Àº {person.Key}ÀÔ´Ï´Ù.");
+                Debug.Log($"ë‚˜ì´ê°€ 15ì¸ ì‚¬ëŒì˜ ì´ë¦„ì€ {person.Key}ì…ë‹ˆë‹¤.");
             }
 
-            if(persons.ContainsKey("Ã¶¼ö"))
+            if(persons.ContainsKey("ì² ìˆ˜"))
             {
-                Debug.Log("»ç¶÷ Áß¿¡ Ã¶¼ö°¡ ÀÖÀ½");
-                Debug.Log($"{person.Key}ÀÇ ³ªÀÌ´Â {person.Value}ÀÔ´Ï´Ù.");
+                Debug.Log("ì‚¬ëŒ ì¤‘ì— ì² ìˆ˜ê°€ ìˆìŒ");
+                Debug.Log($"{person.Key}ì˜ ë‚˜ì´ëŠ” {person.Value}ì…ë‹ˆë‹¤.");
             }
 
             if(persons.ContainsValue(17))
             {
-                Debug.Log("»ç¶÷ Áß¿¡ 17»ìÀÎ »ç¶÷ÀÌ ÀÖÀ½");
-                Debug.Log($"{person.Key}ÀÇ ³ªÀÌ´Â {person.Value}ÀÔ´Ï´Ù.");
+                Debug.Log("ì‚¬ëŒ ì¤‘ì— 17ì‚´ì¸ ì‚¬ëŒì´ ìˆìŒ");
+                Debug.Log($"{person.Key}ì˜ ë‚˜ì´ëŠ” {person.Value}ì…ë‹ˆë‹¤.");
             }
         }
     }

@@ -1,9 +1,9 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class MultidimensionalArray : MonoBehaviour
 {
-    int[,] array = new int[3, 3]; // 3Çà 3¿­À» °¡Áø 2Â÷¿ø ¹è¿­
-    int[,,] array2 = new int[2, 3, 4]; // 3Â÷¿ø ¹è¿­
+    int[,] array = new int[3, 3]; // 3í–‰ 3ì—´ì„ ê°€ì§„ 2ì°¨ì› ë°°ì—´
+    int[,,] array2 = new int[2, 3, 4]; // 3ì°¨ì› ë°°ì—´
 
     int[,] matrix = new int[3, 3];
 

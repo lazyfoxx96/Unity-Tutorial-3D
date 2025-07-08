@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -15,9 +15,9 @@ public class DynamicArray : MonoBehaviour
 
         //list1.Insert(5, 100);
 
-        //list1.Remove(5); // °ª '5'¸¦ Á¦°Å
+        //list1.Remove(5); // ê°’ '5'ë¥¼ ì œê±°
 
-        //list1.RemoveAt(5); // ÀÎµ¦½º 5¹øÀ» Á¦°Å
+        //list1.RemoveAt(5); // ì¸ë±ìŠ¤ 5ë²ˆì„ ì œê±°
 
         //list1.RemoveRange(1, 3);
 

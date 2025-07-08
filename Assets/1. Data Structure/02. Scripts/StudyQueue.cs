@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using UnityEngine;
 
 public class StudyQueue : MonoBehaviour
@@ -12,16 +12,16 @@ public class StudyQueue : MonoBehaviour
             queue.Enqueue(i);
         }
 
-        int output = queue.Dequeue(); // °ª »Ì±â
+        int output = queue.Dequeue(); // ê°’ ë½‘ê¸°
         Debug.Log(output);
 
-        Debug.Log(queue.Peek()); // ´ÙÀ½¿¡ »ÌÀ» °ª È®ÀÎ
+        Debug.Log(queue.Peek()); // ë‹¤ìŒì— ë½‘ì„ ê°’ í™•ì¸
 
-        Debug.Log(queue.Contains(5)); // °ª 5°¡ Æ÷ÇÔµÇ¾îÀÖ´ÂÁö È®ÀÎ true or false
+        Debug.Log(queue.Contains(5)); // ê°’ 5ê°€ í¬í•¨ë˜ì–´ìˆëŠ”ì§€ í™•ì¸ true or false
 
-        queue.Clear(); // ¸ğµç °ª »èÁ¦
+        queue.Clear(); // ëª¨ë“  ê°’ ì‚­ì œ
 
-        Debug.Log(queue.Count); // °¹¼ö È®ÀÎ
+        Debug.Log(queue.Count); // ê°¯ìˆ˜ í™•ì¸
 
     }
 }
