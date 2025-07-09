@@ -1,8 +1,6 @@
 # 상위 디렉터리에서 .editorconfig 설정을 상속하려면 아래 행을 제거하세요.
 root = true
 
-charset = utf-8
-
 # C# 파일
 [*.cs]
 
@@ -231,3 +229,6 @@ dotnet_naming_style.begins_with_i.required_prefix = I
 dotnet_naming_style.begins_with_i.required_suffix = 
 dotnet_naming_style.begins_with_i.word_separator = 
 dotnet_naming_style.begins_with_i.capitalization = pascal_case
+
+[*]
+charset = utf-8
