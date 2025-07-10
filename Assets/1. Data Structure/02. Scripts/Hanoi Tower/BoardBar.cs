@@ -12,7 +12,6 @@ public class BoardBar : MonoBehaviour
     {
         if(!HanoiTower.isSelected)
         {
-            HanoiTower.isSelected = true;
             HanoiTower.selectedDonut = PopDonut();
         }
         else
@@ -46,6 +45,7 @@ public class BoardBar : MonoBehaviour
             return;
         }
 
+        HanoiTower.moveCount++;
         HanoiTower.isSelected = false;
         HanoiTower.selectedDonut = null;
 
@@ -58,8 +58,14 @@ public class BoardBar : MonoBehaviour
 
     public GameObject PopDonut()
     {
-        GameObject donut = barStack.Pop();
+        if(barStack.Count > 0)
+        {
+            HanoiTower.currBar = this;
+            HanoiTower.isSelected = true;
+            GameObject donut = barStack.Pop();
 
-        return donut;
+            return donut;
+        }
+        return null;
     }
 }
