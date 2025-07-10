@@ -4,6 +4,8 @@ public class PoolObject : MonoBehaviour
 {
     private ObjectPoolQueue pool;
 
+    public float bulletSpeed = 100f;
+
     private void Awake()
     {
         pool = FindFirstObjectByType<ObjectPoolQueue>();
@@ -12,6 +14,11 @@ public class PoolObject : MonoBehaviour
     private void OnEnable()
     {
         Invoke("ReturnPool", 3f);
+    }
+
+    private void Update()
+    {
+        transform.position += Vector3.forward * Time.deltaTime * bulletSpeed;
     }
 
     private void ReturnPool()
