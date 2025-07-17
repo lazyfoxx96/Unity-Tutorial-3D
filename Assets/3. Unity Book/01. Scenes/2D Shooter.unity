@@ -228,29 +228,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 349115776}
-  - component: {fileID: 349115775}
   m_Layer: 0
-  m_Name: Enemy Manager (3)
+  m_Name: Spawn Point
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &349115775
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 349115774}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bab156acf7cad824199af98b1045f40a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentTime: 0
-  createTime: 1
-  enemyFactory: {fileID: 7429094276953346376, guid: 7dde5490cdbff7841af2579face6ad42, type: 3}
 --- !u!4 &349115776
 Transform:
   m_ObjectHideFlags: 0
@@ -809,6 +793,61 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1026109261}
   m_CullTransparentMesh: 1
+--- !u!1 &1070568588
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1070568590}
+  - component: {fileID: 1070568589}
+  m_Layer: 0
+  m_Name: EnemyManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1070568589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1070568588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bab156acf7cad824199af98b1045f40a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolSize: 10
+  enemyObjectPool: []
+  spawnPoints:
+  - {fileID: 1073562419}
+  - {fileID: 1873595056}
+  - {fileID: 2006850335}
+  - {fileID: 349115776}
+  - {fileID: 2032025983}
+  currentTime: 0
+  createTime: 1
+  enemyFactory: {fileID: 7429094276953346376, guid: 7dde5490cdbff7841af2579face6ad42, type: 3}
+--- !u!4 &1070568590
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1070568588}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 9.68, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1073562417
 GameObject:
   m_ObjectHideFlags: 0
@@ -818,29 +857,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1073562419}
-  - component: {fileID: 1073562418}
   m_Layer: 0
-  m_Name: Enemy Manager
+  m_Name: Spawn Point
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1073562418
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1073562417}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bab156acf7cad824199af98b1045f40a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentTime: 0
-  createTime: 1
-  enemyFactory: {fileID: 7429094276953346376, guid: 7dde5490cdbff7841af2579face6ad42, type: 3}
 --- !u!4 &1073562419
 Transform:
   m_ObjectHideFlags: 0
@@ -1309,6 +1332,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletFactory: {fileID: 8190725896097327154, guid: c211d3f652197964fa22868233204a48, type: 3}
   firePosition: {fileID: 6401230}
+  poolSize: 10
+  bulletObjectPool: []
 --- !u!114 &1651105609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1782,29 +1807,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1873595056}
-  - component: {fileID: 1873595055}
   m_Layer: 0
-  m_Name: Enemy Manager (1)
+  m_Name: Spawn Point
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1873595055
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1873595054}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bab156acf7cad824199af98b1045f40a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentTime: 0
-  createTime: 1
-  enemyFactory: {fileID: 7429094276953346376, guid: 7dde5490cdbff7841af2579face6ad42, type: 3}
 --- !u!4 &1873595056
 Transform:
   m_ObjectHideFlags: 0
@@ -1987,8 +1996,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentScoreUI: {fileID: 1026109263}
   bestScoreUI: {fileID: 1955620934}
-  currentScore: 0
-  bestScore: 0
 --- !u!4 &1978754353
 Transform:
   m_ObjectHideFlags: 0
@@ -2013,29 +2020,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2006850335}
-  - component: {fileID: 2006850334}
   m_Layer: 0
-  m_Name: Enemy Manager (2)
+  m_Name: Spawn Point
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2006850334
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2006850333}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bab156acf7cad824199af98b1045f40a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentTime: 0
-  createTime: 1
-  enemyFactory: {fileID: 7429094276953346376, guid: 7dde5490cdbff7841af2579face6ad42, type: 3}
 --- !u!4 &2006850335
 Transform:
   m_ObjectHideFlags: 0
@@ -2060,29 +2051,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2032025983}
-  - component: {fileID: 2032025982}
   m_Layer: 0
-  m_Name: Enemy Manager (4)
+  m_Name: Spawn Point
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2032025982
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2032025981}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bab156acf7cad824199af98b1045f40a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentTime: 0
-  createTime: 1
-  enemyFactory: {fileID: 7429094276953346376, guid: 7dde5490cdbff7841af2579face6ad42, type: 3}
 --- !u!4 &2032025983
 Transform:
   m_ObjectHideFlags: 0
@@ -2118,3 +2093,4 @@ SceneRoots:
   - {fileID: 1133506013}
   - {fileID: 1717098158}
   - {fileID: 1978754353}
+  - {fileID: 1070568590}
