@@ -25,6 +25,7 @@ public class EnemyFSM : MonoBehaviour
     public Slider hpSlider;
 
     private Vector3 originPos;
+    private Quaternion originRot;
     public float moveDistance = 20f;
 
     private void Start()
@@ -33,6 +34,7 @@ public class EnemyFSM : MonoBehaviour
         player = GameObject.Find("Player").transform;
         cc = GetComponent<CharacterController>();
         originPos = transform.position;
+        originRot = transform.rotation;
         anim = transform.GetComponentInChildren<Animator>();
 
         Cursor.visible = false;
@@ -73,10 +75,6 @@ public class EnemyFSM : MonoBehaviour
             anim.SetTrigger("IdleToMove");
             m_State = EnemyState.Move;
 
-            Debug.Log($"1-0. {transform.position}");
-            Debug.Log($"2-0. {originPos}");
-            Debug.Log($"3-0. {moveDistance}");
-
             Debug.Log("상태 전환 : Idle -> Move");
         }
     }
@@ -85,9 +83,6 @@ public class EnemyFSM : MonoBehaviour
     {
         if (Vector3.Distance(transform.position, originPos) > moveDistance)
         {
-            Debug.Log($"1. {transform.position}");
-            Debug.Log($"2. {originPos}");
-            Debug.Log($"3. {moveDistance}");
             m_State = EnemyState.Return;
             Debug.Log("상태 전환 : Move -> Return");
         }
@@ -96,15 +91,12 @@ public class EnemyFSM : MonoBehaviour
             Vector3 dir = (player.position - transform.position).normalized;
             cc.Move(dir * moveSpeed * Time.deltaTime);
 
-            Debug.Log($"1-2. {transform.position}");
-            Debug.Log($"2-2. {originPos}");
-            Debug.Log($"3-2. {moveDistance}");
-
             transform.forward = dir;
         }
         else// 타겟이 공격 거리 내 있는 겅우 -> 공격 전환
         {
             currentTime = attackDelay;
+            anim.SetTrigger("MoveToAttackDelay");
             m_State = EnemyState.Attack;
             Debug.Log("상태 전환 : Move -> Attack");
         }
@@ -118,17 +110,23 @@ public class EnemyFSM : MonoBehaviour
             if (currentTime > attackDelay)
             {
                 currentTime = 0;
-                player.GetComponent<FPSPlayerMove>().DamageAction(attackPower);
-
+                //player.GetComponent<FPSPlayerMove>().DamageAction(attackPower);
+                anim.SetTrigger("StartAttack");
                 Debug.Log("공격");
             }
         }
         else
         {
             currentTime = 0f;
+            anim.SetTrigger("AttackToMove");
             m_State = EnemyState.Move;
             Debug.Log("상태 전환 : Attack -> Move");
         }
+    }
+
+    public void AttackAction()
+    {
+        player.GetComponent<FPSPlayerMove>().DamageAction(attackPower);
     }
 
     private void Return()
@@ -142,6 +140,7 @@ public class EnemyFSM : MonoBehaviour
         else
         {
             transform.position = originPos;
+            transform.rotation = originRot;
             hp = 15;
             anim.SetTrigger("MoveToIdle");
             m_State = EnemyState.Idle;
@@ -156,13 +155,16 @@ public class EnemyFSM : MonoBehaviour
 
         hp -= hitPower;
 
-        if (hp > 0)
+        if (hp > 0) // 공격을 받았는데 살았다면
         {
+            anim.SetTrigger("Damaged");
             m_State = EnemyState.Damaged;
-            Debug.Log("상태 전환 : Any State -> Dameged");
+            Debug.Log("상태 전환 : Any State -> Damaged");
+            Damaged();
         }
-        else
+        else // 공격을 받아서 죽었다면
         {
+            anim.SetTrigger("Die");
             m_State = EnemyState.Die;
             Debug.Log("상태 전환 : Any State -> Die");
             Die();
@@ -176,7 +178,7 @@ public class EnemyFSM : MonoBehaviour
 
     IEnumerator DamageProcess()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
 
         m_State = EnemyState.Move;
         Debug.Log("상태 전환 : Damage -> Move");
