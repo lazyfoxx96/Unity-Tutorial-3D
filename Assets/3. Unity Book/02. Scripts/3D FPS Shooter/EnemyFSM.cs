@@ -1,5 +1,7 @@
 using System.Collections;
+using System.Data.SqlTypes;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UI;
 
 public class EnemyFSM : MonoBehaviour
@@ -11,6 +13,7 @@ public class EnemyFSM : MonoBehaviour
     private Transform player; // 타겟
 
     private Animator anim;
+    private NavMeshAgent smith;
 
     public float findDistance = 8f; // 탐지 거리
     public float attackDistance = 3f; // 공격 가능 거리
@@ -36,6 +39,7 @@ public class EnemyFSM : MonoBehaviour
         originPos = transform.position;
         originRot = transform.rotation;
         anim = transform.GetComponentInChildren<Animator>();
+        smith = GetComponent<NavMeshAgent>();
 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -88,10 +92,11 @@ public class EnemyFSM : MonoBehaviour
         }
         else if (Vector3.Distance(transform.position, player.position) > attackDistance) // 타겟이 공격 거리보다 먼 경우 -> 이동 실행
         {
-            Vector3 dir = (player.position - transform.position).normalized;
-            cc.Move(dir * moveSpeed * Time.deltaTime);
+            smith.isStopped = true;
+            smith.ResetPath();
 
-            transform.forward = dir;
+            smith.stoppingDistance = attackDistance;
+            smith.SetDestination(player.position);
         }
         else// 타겟이 공격 거리 내 있는 겅우 -> 공격 전환
         {
@@ -133,9 +138,12 @@ public class EnemyFSM : MonoBehaviour
     {
         if (Vector3.Distance(transform.position, originPos) > 0.1f) // 원래 위치가 아닌 경우 -> 원래 위치로 복귀 이동
         {
-            Vector3 dir = (originPos - transform.position).normalized;
-            cc.Move(dir * moveSpeed * Time.deltaTime);
-            transform.forward = dir;
+            //Vector3 dir = (originPos - transform.position).normalized;
+            //cc.Move(dir * moveSpeed * Time.deltaTime); 
+            //transform.forward = dir;
+
+            smith.SetDestination(originPos);
+            smith.stoppingDistance = 0f;
         }
         else
         {
@@ -152,8 +160,11 @@ public class EnemyFSM : MonoBehaviour
     {
         if (m_State == EnemyState.Damaged || m_State == EnemyState.Die || m_State == EnemyState.Return)
             return;
-
+        
         hp -= hitPower;
+
+        smith.isStopped = true;
+        smith.ResetPath();
 
         if (hp > 0) // 공격을 받았는데 살았다면
         {

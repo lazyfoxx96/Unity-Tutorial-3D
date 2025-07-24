@@ -33,6 +33,7 @@ public class Node : IComparable<Node>
         isObstacle = true;
     }
 
+    // F = G + H
     public float GetFCost()
     {
         return nodeTotalCost + estimateCost;
@@ -46,8 +47,10 @@ public class Node : IComparable<Node>
         if (myF < otherF) return -1;
         if (myF > otherF) return 1;
 
-        if (estimateCost < node.estimateCost) return -1;
-        if (estimateCost > node.estimateCost) return 1;
+        if (estimateCost < node.estimateCost)
+            return -1;
+        if (estimateCost > node.estimateCost)
+            return 1;
 
         return 0;
     }
