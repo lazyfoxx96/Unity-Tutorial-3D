@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class FollowPath : MonoBehaviour
 {
-    public Path path;
+    public Algorithm.Path path;
     public float speed = 5f;
     public float mass = 5f;
     public bool isLooping = true;

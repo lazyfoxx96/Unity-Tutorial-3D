@@ -9,7 +9,7 @@ public class MovePlayer : MonoBehaviour
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
 
-        var dir = new Vector3(h, v, 0).normalized;
+        var dir = new Vector3(h, 0, v).normalized;
 
         transform.position += dir * moveSpeed * Time.deltaTime;
     }
