@@ -15,11 +15,9 @@ public class Crop : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("ㅇㅅㅇ!!!OnTriggerEnter");
         Debug.Log($"{other.transform.name}");
         if (other.CompareTag("Player"))
         {
-            Debug.Log("ㅇㅅㅇ!!!get");
             Get();
         }
     }

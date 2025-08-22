@@ -1,7 +1,7 @@
 using Unity.Cinemachine;
 using UnityEngine;
 
-public enum CameraState { Outside, Field, House, Animal }
+public enum CameraState { Outside, Field, House, Animal, Board }
 
 public class GameManager : Singleton<GameManager>
 {

@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class SelectCharacter : MonoBehaviour
@@ -67,6 +68,10 @@ public class SelectCharacter : MonoBehaviour
     private void Select()
     {
         characterAnims[currentIndex].SetTrigger("Select");
+
+        // 선택한 캐릭터 인덱스 저장
+        LoadSceneManager.Instance.SetCharacterIndex(currentIndex);
+
         StartCoroutine(SelectRoutine());
 
         Debug.Log($"현재 선택한 캐릭터는 {currentIndex}번째 캐릭터입니다.");
@@ -78,7 +83,7 @@ public class SelectCharacter : MonoBehaviour
 
         yield return new WaitForSeconds(3f);
 
-        Fade.onFadeAction?.Invoke(3f, Color.white, true, null);
+        LoadSceneManager.Instance.OnLoadScene();
 
         yield return new WaitForSeconds(3.5f);
     }
